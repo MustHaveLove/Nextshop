@@ -1,17 +1,39 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { PureComponent, useContext } from 'react'
+import { router } from 'websocket'
 import Layout from '../../components/Layout'
 import data from '../../utils/data'
+import { Store } from '../../utils/Store'
 
 
 export default function ProductScreen() {
-    const { query } = useRouter()
+    const { state, dispatch } = useContext(Store)
+    const router = useRouter()
+
+    const { query } = router
     const { slug } = query
     const product = data.products.find((x) =>  x.slug === slug)
     
     if(!product) {
         return <div> Product Not Found! </div>
+    }
+
+    const addToCartHandler = () => {
+        const existItem = state.cart.cartItems.find((X) => x.slug
+        === product.slug)
+        const quantity = existItem ? existItem.quantity + 1 : 1
+
+        if(product.countInStock < quantity) {
+            alert('Sorry, product is out of stock. 상품이 떨어졌습니다')
+            return
+
+        }
+
+        dispatch({ type: 'CART_ADD_ITEM', payload: {...product, quantity }})
+        router.push('/cart')
+    
     }
 
     return (
@@ -53,7 +75,7 @@ export default function ProductScreen() {
               <div>Status</div>
               <div>{product.countInStock > 0 ? 'In stock' : 'Unavailable'}</div>
             </div>
-            <button className="primary-button w-full">Add to cart</button>
+            <button className="primary-button w-full" onClick={addToCartHandler}>Add to cart</button>
           </div>
         </div>
       </div>

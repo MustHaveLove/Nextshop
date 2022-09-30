@@ -1,7 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useContext } from "react";
+import { Store } from "../utils/Store";
 
 export default function Layout({ title, children }) {
+  const { state } = useContext(Store)
+  const { cart } = state
+
   return (
     <>
       <div>
@@ -18,7 +23,9 @@ export default function Layout({ title, children }) {
               </Link>
               <div>
                 <Link href={"/cart"}>
-                  <a className="p-2">Cart</a>
+                  <a className="p-2">
+                    Cart
+                    {cart.cartItems.reduce((a, c) => c.quantity, 0)}</a>
                 </Link>
                 <Link href={"/login"}>
                   <a className="p-2">Login</a>

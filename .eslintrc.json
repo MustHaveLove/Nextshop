@@ -1,6 +1,8 @@
 {
   "env": {"browser": true, "node": true, "es6": true},
+  "plugins": ["react"],
   "extends": ["eslint:recommended", "next/core-web-vitals", "plugin:react/recommended"],
-  "rules": {"react/react-in-jsx-scope": "off", "react/prop-types": "off" }
+  "rules": {"react/react-in-jsx-scope": "off", "react/prop-types": "off","react/jsx-uses-react": "error",   
+  "react/jsx-uses-vars": "error"  }
 }
 

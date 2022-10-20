@@ -19,7 +19,7 @@ export default function profile() {
       <div className={styles.profile_card}>
         <div className={styles.card_header}>
           <div className={styles.pic}>
-            <Image src="/images.png" width={300} height={300} />
+            <Image src={"/images.png"} alt= "face" width={300} height={300} />
           </div>
           <div className={styles.name}>류재원</div>
           <div className={styles.desc}>3학년</div>

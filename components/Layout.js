@@ -1,11 +1,11 @@
+import { signOut, useSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { React, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { Menu } from '@headlessui/react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Store } from '../utils/Store';
-import { signOut, useSession } from 'next-auth/react';
-import { Menu } from '@headlessui/react';
 import DropdownLink from './DropdownLink';
 import Cookies from 'js-cookie';
 
@@ -28,20 +28,19 @@ export default function Layout({ title, children }) {
     <>
       <Head>
         <title>{title ? title + ' - NextShop' : 'NextShop'}</title>
-        <meta name="description" content="Nextjs" />
+        <meta name="description" content="Nextjs Ecommerce" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <ToastContainer position="bottom-center" limit={1} />
+
       <div className="flex min-h-screen flex-col justify-between">
         <header>
-          <nav className="flex flex-row h-12 items-center px-4 justify-between shadow-md bg-slate-200">
+          <nav className="flex h-12 items-center px-4 justify-between shadow-md bg-slate-200">
             <Link href="/">
               <a className="text-lg font-bold">NextShop</a>
             </Link>
             <div>
-              <Link href="/profiles">
-                <a className="p-2">Profile</a>
-              </Link>
               <Link href="/crypto">
                 <a className="p-2">Crypto</a>
               </Link>
@@ -55,6 +54,7 @@ export default function Layout({ title, children }) {
                   )}
                 </a>
               </Link>
+
               {status === 'loading' ? (
                 'Loading'
               ) : session?.user ? (
@@ -62,7 +62,7 @@ export default function Layout({ title, children }) {
                   <Menu.Button className="text-blue-600">
                     {session.user.name}
                   </Menu.Button>
-                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
+                  <Menu.Items className="absolute right-0 w-56 origin-top-right bg-white  shadow-lg ">
                     <Menu.Item>
                       <DropdownLink className="dropdown-link" href="/profile">
                         Profile
@@ -95,9 +95,9 @@ export default function Layout({ title, children }) {
             </div>
           </nav>
         </header>
-        <main className="container m-auto mt-4">{children}</main>
+        <main className="container m-auto mt-4 px-4">{children}</main>
         <footer className="flex h-10 justify-center items-center shadow-inner bg-red-100">
-          <p>Copyright &copy; 2022 Nextshop</p>
+          <p>Copyright &copy; 2022 NextShop</p>
         </footer>
       </div>
     </>

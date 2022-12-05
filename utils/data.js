@@ -1,17 +1,16 @@
-import bcryptjs from 'bcryptjs'
-
+import bcrypt from 'bcryptjs';
 const data = {
   users: [
     {
       name: 'John',
       email: 'admin@example.com',
-      password: bcryptjs.hashSync('123456'),
+      password: bcrypt.hashSync('123456'),
       isAdmin: true,
     },
     {
       name: 'Jane',
       email: 'user@example.com',
-      password: bcryptjs.hashSync('123456'),
+      password: bcrypt.hashSync('123456'),
       isAdmin: false,
     },
   ],
@@ -89,6 +88,6 @@ const data = {
       description: 'A popular pants',
     },
   ],
-}
+};
 
-export default data
+export default data;

@@ -39,7 +39,7 @@ export default function Layout({ title, children }) {
               <a className="text-lg font-bold">NextShop</a>
             </Link>
             <div>
-              <Link href="/profile">
+              <Link href="/profiles">
                 <a className="p-2">Profile</a>
               </Link>
               <Link href="/crypto">

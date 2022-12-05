@@ -57,6 +57,11 @@ export default function Crypto() {
             <a className=" text-xl">Certificate - 인증서 </a>
           </Link>
         </div>
+        <div className="button-link">
+          <Link href="crypto/jwt-storage">
+            <a className=" text-xl">JWT - Storage </a>
+          </Link>
+        </div>
       </div>
     </Layout>
   );
